@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Data Loader</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-10">
+  <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-8">
+    <h1 class="text-3xl font-bold mb-6 text-center">API Data Loader</h1>
+    
+    <div class="flex justify-between items-center mb-6">
+      <button 
+        onclick="loadData()" 
+        class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
+      >
+        Load Data from API
+      </button>
+
+      <button 
+        onclick="clearTable()" 
+        class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
+      >
+        Clear Table
+      </button>
+    </div>
+
+    <p class="text-gray-600 mb-4">
+      API: 
+      <a href="https://jsonplaceholder.typicode.com/todos/" target="_blank" class="text-blue-500 hover:underline">
+        https://jsonplaceholder.typicode.com/todos/
+      </a>
+    </p>
+
+    <div class="overflow-x-auto">
+      <table class="w-full table-auto border-collapse border border-gray-300">
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="border p-3">ID</th>
+            <th class="border p-3">Title</th>
+            <th class="border p-3">Completed</th>
+          </tr>
+        </thead>
+        <tbody id="data-table" class="text-center">
+        
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

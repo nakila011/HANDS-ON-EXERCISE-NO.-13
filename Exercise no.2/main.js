@@ -1,4 +1,3 @@
-// Reference DOM elements
 const form = document.getElementById("recordForm");
 const tableBody = document.querySelector("#recordTable tbody");
 const btnClear = document.getElementById("btnClear");
@@ -8,7 +7,7 @@ const sortSelect = document.getElementById("sortSelect");
 
 let records = JSON.parse(localStorage.getItem("records")) || [];
 
-// Render table rows
+
 function renderTable() {
     tableBody.innerHTML = "";
     
@@ -30,7 +29,7 @@ function renderTable() {
     });
 }
 
-// Insert or update a record
+
 form.addEventListener("submit", (event) => {
     event.preventDefault();
     
@@ -44,13 +43,13 @@ form.addEventListener("submit", (event) => {
         return;
     }
 
-    // Check if updating an existing record
+  
     const index = form.dataset.index;
     if (index) {
         records[index] = { firstName, middleName, lastName, age };
         delete form.dataset.index;
     } else {
-        // Insert new record
+        
         records.push({ firstName, middleName, lastName, age });
     }
 
@@ -58,7 +57,7 @@ form.addEventListener("submit", (event) => {
     renderTable();
 });
 
-// Edit record
+
 function editRecord(index) {
     const record = records[index];
 
@@ -67,10 +66,10 @@ function editRecord(index) {
     document.getElementById("lastName").value = record.lastName;
     document.getElementById("age").value = record.age;
 
-    form.dataset.index = index;  // Store index for update
+    form.dataset.index = index;  
 }
 
-// Delete record
+
 function deleteRecord(index) {
     if (confirm("Are you sure you want to delete this record?")) {
         records.splice(index, 1);
@@ -78,13 +77,13 @@ function deleteRecord(index) {
     }
 }
 
-// Clear form fields
+
 btnClear.addEventListener("click", () => {
     form.reset();
     delete form.dataset.index; 
 });
 
-// Clear all records
+
 btnClearRecords.addEventListener("click", () => {
     if (confirm("Are you sure you want to clear all records?")) {
         records = [];
@@ -92,13 +91,13 @@ btnClearRecords.addEventListener("click", () => {
     }
 });
 
-// Save records to local storage
+
 btnSave.addEventListener("click", () => {
     localStorage.setItem("records", JSON.stringify(records));
     alert("Records saved to local storage!");
 });
 
-// Sorting
+
 sortSelect.addEventListener("change", () => {
     const [key, direction] = sortSelect.value.split("-");
 
@@ -113,5 +112,5 @@ sortSelect.addEventListener("change", () => {
     renderTable();
 });
 
-// Load and display records on page load
+
 window.addEventListener("load", renderTable);
